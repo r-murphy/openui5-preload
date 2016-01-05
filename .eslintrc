@@ -17,6 +17,7 @@
 		"space-unary-ops": 2,
 		"strict": [2, "global"],
 		"wrap-iife": [2, "any"],
+		"no-undef": 2,
 
 		"camelcase": 1,
 		"consistent-return": 1,
@@ -33,7 +34,7 @@
 		"valid-jsdoc": [1, {
 			"requireReturn": false
 		}],
-		"default-case": 1,
+		"default-case": 0,
 
 		"dot-notation": 0,
 		"eol-last": 0,

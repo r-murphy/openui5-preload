@@ -1,18 +1,41 @@
 {
   "name": "openui5-preload",
   "version": "1.0.0",
-  "description": "Creates OpenUI5 Preload js file",
+  "description": "Creates OpenUI5 Preload files",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint index.js lib test",
+    "unit": "mocha test/*.js",
+    "test": "npm run lint && npm run unit"
+  },
+  "bin": {
+    "openui5-preload": "bin/preload.js"
   },
   "keywords": [
     "openui5",
     "ui5",
-    "preload",
-    "grunt",
-    "gulp"
+    "preload"
   ],
   "author": "Ryan Murphy",
-  "license": "ISC"
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "fs-extra": "^0.26.3",
+    "globby": "^4.0.0",
+    "maxmin": "^2.1.0",
+    "multimatch": "^2.1.0",
+    "pretty-data": "^0.40.0",
+    "read-file": "^0.2.0",
+    "slash": "^1.0.0",
+    "uglify-js": "^2.4.17",
+    "underscore": "^1.8.3",
+    "yargs": "^3.31.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.0",
+    "rimraf": "^2.5.0"
+  }
 }

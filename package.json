@@ -1,0 +1,18 @@
+{
+  "name": "openui5-preload",
+  "version": "1.0.0",
+  "description": "Creates OpenUI5 Preload js file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "openui5",
+    "ui5",
+    "preload",
+    "grunt",
+    "gulp"
+  ],
+  "author": "Ryan Murphy",
+  "license": "ISC"
+}

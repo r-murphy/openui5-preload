@@ -1,2 +1,1 @@
-"use strict";
-module.exports = require('./lib/preload');
+module.exports = require('./lib/preload')

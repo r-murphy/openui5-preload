@@ -1,6 +1,6 @@
 {
   "name": "openui5-preload",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Creates OpenUI5 Preload files",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "test": "npm run lint && npm run unit"
   },
   "bin": {
-    "openui5-preload": "bin/preload.js"
+    "bch-preload": "bin/preload.js"
   },
   "keywords": [
     "openui5",
@@ -19,23 +19,32 @@
   "author": "Ryan Murphy",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 6"
   },
   "dependencies": {
-    "chalk": "^1.1.1",
-    "fs-extra": "^0.26.3",
-    "globby": "^4.0.0",
+    "chalk": "^2.1.0",
+    "fs-extra": "^4.0.2",
+    "globby": "^6.1.0",
+    "line-count": "^0.1.0",
     "maxmin": "^2.1.0",
     "multimatch": "^2.1.0",
+    "object.defaults": "^1.1.0",
     "pretty-data": "^0.40.0",
     "read-file": "^0.2.0",
+    "season": "^6.0.0",
     "slash": "^1.0.0",
-    "uglify-js": "^2.4.17",
-    "underscore": "^1.8.3",
-    "yargs": "^3.31.0"
+    "uglify-js": "^3.0.27",
+    "yargs": "^9.0.1"
   },
   "devDependencies": {
-    "mocha": "^2.3.0",
-    "rimraf": "^2.5.0"
+    "eslint": "^4.8.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^3.5.0",
+    "rimraf": "^2.6.1",
+    "underscore": "^1.8.3"
   }
 }

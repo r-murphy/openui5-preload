@@ -3,17 +3,21 @@
 
 A node module and cli utility to create OpenUI5 Component-preload.js and library-preload.json files. 
 
-This is a fork of the preload task from [grunt-openui5](https://github.com/sap/grunt-openui5/) with the grunt dependency removed. It behaves the same aside from some logging differences, and has very similar options.
+This is a fork of the preload task from [grunt-openui5](https://github.com/sap/grunt-openui5/) with the grunt dependency removed. It behaves the same aside from some default logging differences, and has very similar options.
 
 The goal of this project is to be the core implementation usuable by vanilla node, a grunt plugin wrapper or a gulp plugin, similar to uglify-js and its corresponding gulp & grunt plugins.
 
-*CLI in progress.*
+*Andvanced CLI in progress (can be used now with the `-x <config_file>` option)*
 
 ## Install
     
 From NPM for programmatic use:
 
-    npm install openui5-preload --save
+    npm install openui5-preload --save-dev
+    
+OR
+
+	yarn add openui5-preload --dev
 
 ## Usage
 
@@ -35,23 +39,26 @@ preload({
 ### Options
 
 #### resources
-Type: `string` or `array` or `object`
+Type: `String` or `Object` or `Array<String|Object>`
 
 Resources/files that should be used as source for preload files.
 
-Type     | Result                             | Example
--------- | ---------------------------------- | -------
-*String* | See `cwd`.                         | `'src'`
-*Array*  | Array of `string` and/or `object`. | `[ 'src', { cwd: 'webapp', prefix: 'my/app' } ]`
-*Object* | See `cwd`, `prefix` and `src`      | `{ cwd: 'webapp', prefix: 'my/app', src: '**' }`
+Type     | Result                   | Example
+-------- | ------------------------ | -------
+*String* | See `Resource.cwd`.      | `'src'`
+*Object* | See `Resource.*`          | `{ cwd: 'webapp', prefix: 'my/app', src: '**' }`
+*Array*  | Array of `String|Object` | `[ 'src', { cwd: 'webapp', prefix: 'my/app' } ]`
 
-##### cwd
-Type: `string`
+##### Resource.cwd
+
+Type: `String`
 
 Base/root directory for finding resources.
 
-##### prefix
-Type: `string`  
+##### Resource.prefix
+
+Type: `String`  
+
 Default: ` `
 
 Directory namespace prefix that should be prepended to all found paths. This is useful if the source folder structure is not the same as the module namespace.
@@ -60,8 +67,10 @@ Example:
 `{ cwd: 'webapp', prefix: 'my/app' }`  
 `webapp/foo.js` will be treated as `my/app/foo.js` instead of `foo.js`.
 
-##### src
-Type: `string` or `array` of `string`  
+##### Resource.src
+
+Type: `String` or `Array<String>`
+
 Default:
 ```
 [
@@ -79,7 +88,9 @@ Default:
 Glob pattern(s) for finding relevant resources inside `cwd`. If set, the default patterns will be replaced.
 
 #### dest
-Type: `string`  
+
+Type: `String` 
+
 Default value: `.`
 
 Path to the dest folder in which the preload files should be created.
@@ -109,7 +120,7 @@ Enable auto detection of Components. A preload file will be created for each `Co
 components: true
 ```
 
-##### `string` / `array` of `string`
+##### `String` / `array` of `String`
 
 Namespace path(s) to Component(s).
 
@@ -134,7 +145,7 @@ components: {
 ```
 
 ##### src
-Type: `string` / `array` of `string`  
+Type: `String` / `array` of `String`  
 Default: component namespace path + `/**` (e.g. `my/app/**`)
 
 Glob pattern(s) for files that should be included into the preload.  

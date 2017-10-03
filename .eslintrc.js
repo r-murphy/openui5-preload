@@ -5,4 +5,4 @@ module.exports = {
       "quotes": ["warn", "single", { "allowTemplateLiterals": true, "avoidEscape": true }],
       "semi": ["warn", "never"]
     }
-};
+}

@@ -11,24 +11,18 @@
 // "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
 // either express or implied. See the License for the specific
 // language governing permissions and limitations under the License.
-'use strict'
 
-var assert = require('assert')
-var read = require('read-file')
+const assert = require('assert')
+const fse = require('fs-extra')
 
-exports.equal = function(oOptions) {
-  var oReadOptions = {
-    encoding: 'utf8'
-  }
-
-  var sActualFileContent = read.sync(oOptions.sActualFileSource, oReadOptions)
+exports.equal = (oOptions) => {
+  const sActualFileContent = fse.readFileSync(oOptions.sActualFileSource, 'utf8')
     .replace(/\r\n/gm, '\n') // replace \r\n with \n to be consistent everywhere
     .replace(/\\r\\n/gm, '\\n') // replace \\r\\n with \\n to be consistent everywhere
     .replace(/\n$/, '') // remove the last LF;
-  var sExpectedFileContent = read.sync(oOptions.sExpectedFileSource, oReadOptions)
+  const sExpectedFileContent = fse.readFileSync(oOptions.sExpectedFileSource, 'utf8')
     .replace(/\r\n/gm, '\n') // replace \r\n with \n to be consistent everywhere
     .replace(/\\r\\n/gm, '\\n') // replace \\r\\n with \\n to be consistent everywhere
     .replace(/\n$/, '') // remove the last LF
-
   assert.equal(sActualFileContent, sExpectedFileContent, oOptions.sMessage)
 }

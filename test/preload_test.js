@@ -13,61 +13,63 @@
 // language governing permissions and limitations under the License.
 
 /* eslint-env mocha */
-'use strict'
 
-var _ = require('underscore')
-var path = require('path')
-var rimraf = require('rimraf')
-var fileContent = require('./asserts/fileContent')
-var preload = require('..')
+const fse = require('fs-extra')
+const path = require('path')
+const fileContentAssert = require('./asserts/fileContentAssert')
+const preload = require('..')
 
-var TMP = 'tmp/preload'
+const outputDir = path.join(__dirname, 'preload', 'output')
+fse.emptyDirSync(outputDir)
 
-rimraf.sync(TMP)
-
-var types = {
-  Component: {
+const types = [
+  {
+    name: 'Component',
     key: 'components',
     fixture: 'app',
     prefix: 'my/app',
     suffix: 'js'
   },
-  library: {
+  {
+    name: 'library',
     key: 'libraries',
     fixture: 'library',
     prefix: 'my/ui/lib',
     suffix: 'json'
   }
-}
+]
 
-var scenarios = {
-  'default_options': {
+const scenarios = [
+  {
+    name: 'default_options'
   },
-  'no_compress': {
-    'no_compress': true
+  {
+    name: 'no_compress',
+    no_compress: true
   },
-  'resource_prefix': {
+  {
+    name: 'resource_prefix',
     prefix: true
   }
-}
+]
 
-// type and scenario are objects here
-function getPreloadFilePath(type, scenario) {
-  // i.e. component_default_options/my/app/Component-preload.js
-  var parts = [(type.name.toLowerCase() + '_' + scenario.name)]
-  if (!scenario.prefix) {
-    // if prefix was passed to preload(), it won't be in the output path
-    parts.push(type.prefix)
+describe('openui5_preload', () => {
+  for (const type of types) {
+    describe(type.name, () => {
+      for (const scenario of scenarios) {
+        it(scenario.name, () => {
+          runIt(type, scenario)
+          assertIt(type, scenario)
+        })
+      }
+    })
   }
-  parts.push(type.name + '-preload.' + type.suffix)
-  return path.join.apply(path, parts)
-}
+})
 
-// type and scenario are objects here
 function runIt(type, scenario) {
-  var options = {}
-  var src = path.join('test/preload/fixtures', type.fixture)
-  options.dest = path.join(TMP, type.name.toLowerCase() + '_' + scenario.name)
+  const options = {}
+  const src = path.join('test/preload/fixtures', type.fixture)
+  options.dest = path.join(outputDir, `${type.name.toLowerCase()}_${scenario.name}`)
   if (scenario.prefix) {
     options[type.key] = type.prefix
     options.resources = [{
@@ -84,35 +86,20 @@ function runIt(type, scenario) {
   preload(options)
 }
 
-// type and scenario are objects here
 function assertIt(type, scenario) {
-  var preloadPath = getPreloadFilePath(type, scenario)
-  fileContent.equal({
-    sActualFileSource: path.join(TMP, preloadPath),
+  const preloadPath = getPreloadFilePath(type, scenario)
+  fileContentAssert.equal({
+    sActualFileSource: path.join(outputDir, preloadPath),
     sExpectedFileSource: path.join('test/preload/expected', preloadPath),
     sMessage: 'preload should be correctly created.'
   })
 }
 
-function runAndAssert(type, scenario) {
-  it(scenario.name, function() {
-    runIt(type, scenario)
-    assertIt(type, scenario)
-  })
+function getPreloadFilePath(type, scenario) {
+  // i.e. component_default_options/my/app/Component-preload.js
+  return path.join(...[
+    `${type.name.toLowerCase()}_${scenario.name}`,
+    ...(scenario.prefix ? [] : [type.prefix]), // If prefix was passed to preload(), it won't be in the output path
+    `${type.name}-preload.${type.suffix}`
+  ])
 }
-
-function runAndAssertAllForType(type) {
-  describe(type.name, function() {
-    _.each(scenarios, function(scenarioConfig, scenarioName) {
-      scenarioConfig.name = scenarioName
-      runAndAssert(type, scenarioConfig)
-    })
-  })
-}
-
-describe('openui5_preload', function() {
-  _.each(types, function(typeConfig, typeName) {
-    typeConfig.name = typeName
-    runAndAssertAllForType(typeConfig)
-  })
-})

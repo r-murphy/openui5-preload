@@ -1,2 +1,3 @@
-test/preload/expected/
 test/preload/fixtures/
+test/preload/expected/
+test/preload/output/

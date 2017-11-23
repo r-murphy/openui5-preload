@@ -20,3 +20,9 @@ console.log('myJS');
 function myFunction(longVariableName, longerVariableName) {
 	return longVariableName + longerVariableName;
 }
+
+// Some ES6 Code
+let foo = 'foo';
+let obj = {
+	[foo]: 'bar'
+};

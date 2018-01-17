@@ -1,7 +1,7 @@
 
 # openui5-preload
 
-A node module and cli utility to create OpenUI5 Component-preload.js and library-preload.json files. 
+A node module and cli utility to create OpenUI5 Component-preload.js and library-preload.json files.
 
 This is a fork of the preload task from [grunt-openui5](https://github.com/sap/grunt-openui5/) with the grunt dependency removed. It behaves the same aside from some default logging differences, and has very similar options.
 
@@ -10,11 +10,11 @@ The goal of this project is to be the core implementation usuable by vanilla nod
 *Andvanced CLI in progress (can be used now with the `-x <config_file>` option)*
 
 ## Install
-    
+
 From NPM for programmatic use:
 
     npm install openui5-preload --save-dev
-    
+
 OR
 
 	yarn add openui5-preload --dev
@@ -87,20 +87,34 @@ Default:
 
 Glob pattern(s) for finding relevant resources inside `cwd`. If set, the default patterns will be replaced.
 
+##### compatVersion
+
+Type: `string`  
+Default: `json`
+
+Sets the UI5 version used for compatibility mode in the format `<major>.<minor>`, or keywords 'json' or 'edge'.
+
+NOTE: Unlike SAP's grunt-openui5 (https://github.com/SAP/grunt-openui5), the default behaviour is the legacy json mode, not the edge js mode.
+
+Example:  
+When building for UI5 target version 1.38.x, use `compatVersion: '1.38'`.
+
 #### dest
 
-Type: `String` 
+Type: `String`
 
 Default value: `.`
 
 Path to the dest folder in which the preload files should be created.
+
+
 
 #### compress
 Type: `boolean`  
 Default value: `true`
 
 Optional parameter to set compression/minification of the files.
-- Javascript is minified using [UglifyJS2](https://github.com/mishoo/UglifyJS2) and copyright comments are preserved (comments matching regular expression `/copyright|\(c\)|released under|license|\u00a9/i` )
+- JavaScript is minified using [UglifyJS2](https://github.com/mishoo/UglifyJS2) and copyright comments are preserved (comments matching regular expression `/copyright|\(c\)|released under|license|\u00a9/i` )
 - XML is minified using [pretty-data](https://github.com/vkiryukhin/pretty-data)
 - JSON is parsed for correctness and to remove extra whitespace
 

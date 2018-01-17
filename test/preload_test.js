@@ -35,7 +35,8 @@ const types = [
     key: 'libraries',
     fixture: 'library',
     prefix: 'my/ui/lib',
-    suffix: 'json'
+    suffix: 'json',
+    compatVersion: 'json'
   }
 ]
 
@@ -50,6 +51,11 @@ const scenarios = [
   {
     name: 'resource_prefix',
     prefix: true
+  },
+  {
+    name: 'compat_1.40',
+    compatVersion: '1.40',
+    suffix: 'js' // override types.suffix
   }
 ]
 
@@ -67,9 +73,10 @@ describe('openui5_preload', () => {
 })
 
 function runIt(type, scenario) {
-  const options = {}
+  const options = {
+    dest: path.join(outputDir, `${type.name.toLowerCase()}_${scenario.name}`)
+  }
   const src = path.join('test/preload/fixtures', type.fixture)
-  options.dest = path.join(outputDir, `${type.name.toLowerCase()}_${scenario.name}`)
   if (scenario.prefix) {
     options[type.key] = type.prefix
     options.resources = [{
@@ -82,6 +89,9 @@ function runIt(type, scenario) {
   }
   if (scenario.no_compress) {
     options.compress = false
+  }
+  if (scenario.compatVersion) {
+    options.compatVersion = scenario.compatVersion
   }
   preload(options)
 }
@@ -100,6 +110,6 @@ function getPreloadFilePath(type, scenario) {
   return path.join(...[
     `${type.name.toLowerCase()}_${scenario.name}`,
     ...(scenario.prefix ? [] : [type.prefix]), // If prefix was passed to preload(), it won't be in the output path
-    `${type.name}-preload.${type.suffix}`
+    `${type.name}-preload.${scenario.suffix || type.suffix}`
   ])
 }

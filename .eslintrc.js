@@ -1,8 +1,9 @@
 module.exports = {
     "extends": "standard",
     "rules": {
-      "space-before-function-paren": ["warn", "never"],
+      "comma-dangle": "off",
       "quotes": ["warn", "single", { "allowTemplateLiterals": true, "avoidEscape": true }],
+      "space-before-function-paren": ["warn", "never"],
       "semi": ["warn", "never"]
     }
 }

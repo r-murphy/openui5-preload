@@ -4,6 +4,7 @@ module.exports = {
       "comma-dangle": "off",
       "quotes": ["warn", "single", { "allowTemplateLiterals": true, "avoidEscape": true }],
       "space-before-function-paren": ["warn", "never"],
-      "semi": ["warn", "never"]
+      "semi": ["warn", "never"],
+      "lines-between-class-member": "off"
     }
 }

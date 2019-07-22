@@ -24,5 +24,6 @@ exports.equal = (oOptions) => {
     .replace(/\r\n/gm, '\n') // replace \r\n with \n to be consistent everywhere
     .replace(/\\r\\n/gm, '\\n') // replace \\r\\n with \\n to be consistent everywhere
     .replace(/\n$/, '') // remove the last LF
+  // eslint-disable-next-line node/no-deprecated-api
   assert.equal(sActualFileContent, sExpectedFileContent, oOptions.sMessage)
 }

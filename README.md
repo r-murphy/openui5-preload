@@ -1,9 +1,10 @@
-
-# openui5-preload
+# ui5-preload
 
 A node module and cli utility to create OpenUI5 Component-preload.js and library-preload.json files.
 
-This is a fork of the preload task from [grunt-openui5](https://github.com/sap/grunt-openui5/) with the grunt dependency removed. It behaves the same aside from some default logging differences, and has very similar options.
+This is a fork of the [openui5-preload](https://github.com/r-murphy/openui5-preload), that also is a fork of the preload task from [grunt-openui5](https://github.com/sap/grunt-openui5/) with the grunt dependency removed. It behaves the same aside from some default logging differences, and has very similar options.
+This package can build Component-preload.js with new compatVersion, including sap.ui.define mode.
+Used in vscode extension [ui5-tools](https://github.com/CarlosOrozco88/ui5-tools).
 
 The goal of this project is to be the core implementation usuable by vanilla node, a grunt plugin wrapper or a gulp plugin, similar to uglify-js and its corresponding gulp & grunt plugins.
 
@@ -13,11 +14,11 @@ The goal of this project is to be the core implementation usuable by vanilla nod
 
 From NPM for programmatic use:
 
-    npm install openui5-preload --save-dev
+    npm install ui5-preload --save-dev
 
 OR
 
-	yarn add openui5-preload --dev
+	yarn add ui5-preload --dev
 
 ## Usage
 
@@ -92,7 +93,7 @@ Glob pattern(s) for finding relevant resources inside `cwd`. If set, the default
 Type: `string`  
 Default: `json`
 
-Sets the UI5 version used for compatibility mode in the format `<major>.<minor>`, or keywords 'json' or 'edge'.
+Sets the UI5 version used for compatibility mode in the format `<major>.<minor>`, or keywords `json` or `edge`.
 
 NOTE: Unlike SAP's grunt-openui5 (https://github.com/SAP/grunt-openui5), the default behaviour is the legacy json mode, not the edge js mode.
 
@@ -114,7 +115,7 @@ Type: `boolean`
 Default value: `true`
 
 Optional parameter to set compression/minification of the files.
-- JavaScript is minified using [UglifyJS2](https://github.com/mishoo/UglifyJS2) and copyright comments are preserved (comments matching regular expression `/copyright|\(c\)|released under|license|\u00a9/i` )
+- JavaScript is minified using [UglifyJS2](https://github.com/mishoo/UglifyJS) and copyright comments are preserved (comments matching regular expression `/copyright|\(c\)|released under|license|\u00a9/i` )
 - XML is minified using [pretty-data](https://github.com/vkiryukhin/pretty-data)
 - JSON is parsed for correctness and to remove extra whitespace
 
@@ -197,7 +198,3 @@ preload({
   libraries: 'my/ui/lib'
 });
 ```
-
-## License
-
-[Apache License 2.0](http: //www.apache.org/licenses/LICENSE-2.0) © 2015 [Ryan Murphy]

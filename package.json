@@ -1,6 +1,6 @@
 {
-  "name": "openui5-preload",
-  "version": "2.3.2",
+  "name": "ui5-preload",
+  "version": "1.0.0",
   "description": "Creates OpenUI5 Preload files",
   "main": "index.js",
   "scripts": {
@@ -10,17 +10,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/r-murphy/openui5-preload.git"
+    "url": "https://github.com/CarlosOrozco88/ui5-preload"
+  },
+  "bugs": {
+    "url": "https://github.com/CarlosOrozco88/ui5-preload/issues"
   },
   "bin": {
-    "openui5-preload": "bin/preload.js"
+    "ui5-preload": "bin/preload.js"
   },
   "keywords": [
     "openui5",
     "ui5",
     "preload"
   ],
-  "author": "Ryan Murphy",
+  "author": "Carlos Orozco Jiménez <carlos.orozco.jimenez@gmail.com>",
+  "contributors": [
+    "Carlos Orozco Jiménez <carlos.orozco.jimenez@gmail.com>",
+    "Ryan Murphy <rdmurphy@gmail.com>"
+  ],
   "license": "Apache-2.0",
   "engines": {
     "node": ">= 6"

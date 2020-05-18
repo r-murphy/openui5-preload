@@ -115,7 +115,7 @@ Type: `boolean`
 Default value: `true`
 
 Optional parameter to set compression/minification of the files.
-- JavaScript is minified using [UglifyJS3](https://github.com/mishoo/UglifyJS) and copyright comments are preserved (comments matching regular expression `/copyright|\(c\)|released under|license|\u00a9/i` )
+- JavaScript is minified using [terser](https://github.com/terser/terser) and copyright comments are preserved (comments matching regular expression `/copyright|\(c\)|released under|license|\u00a9/i` )
 - XML is minified using [pretty-data](https://github.com/vkiryukhin/pretty-data)
 - JSON is parsed for correctness and to remove extra whitespace
 

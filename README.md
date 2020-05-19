@@ -1,4 +1,4 @@
-# ui5-preload
+# openui5-preload
 
 A node module and cli utility to create OpenUI5 Component-preload.js and library-preload.json files.
 
@@ -14,11 +14,11 @@ The goal of this project is to be the core implementation usuable by vanilla nod
 
 From NPM for programmatic use:
 
-    npm install ui5-preload --save-dev
+    npm install openui5-preload --save-dev
 
 OR
 
-	yarn add ui5-preload --dev
+	yarn add openui5-preload --dev
 
 ## Usage
 

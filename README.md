@@ -2,9 +2,7 @@
 
 A node module and cli utility to create OpenUI5 Component-preload.js and library-preload.json files.
 
-This is a fork of the [openui5-preload](https://github.com/r-murphy/openui5-preload), that also is a fork of the preload task from [grunt-openui5](https://github.com/sap/grunt-openui5/) with the grunt dependency removed. It behaves the same aside from some default logging differences, and has very similar options.
-This package can build Component-preload.js with new compatVersion, including sap.ui.define mode.
-Used in vscode extension [ui5-tools](https://github.com/CarlosOrozco88/ui5-tools).
+This is a fork of the preload task from [grunt-openui5](https://github.com/sap/grunt-openui5/) with the grunt dependency removed. It behaves the same aside from some default logging differences, and has very similar options.
 
 The goal of this project is to be the core implementation usuable by vanilla node, a grunt plugin wrapper or a gulp plugin, similar to uglify-js and its corresponding gulp & grunt plugins.
 

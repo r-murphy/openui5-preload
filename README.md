@@ -196,3 +196,7 @@ preload({
   libraries: 'my/ui/lib'
 });
 ```
+
+## License
+
+[Apache License 2.0](http: //www.apache.org/licenses/LICENSE-2.0) © 2015 [Ryan Murphy]

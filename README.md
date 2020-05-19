@@ -1,4 +1,3 @@
-
 # openui5-preload
 
 A node module and cli utility to create OpenUI5 Component-preload.js and library-preload.json files.
@@ -92,7 +91,7 @@ Glob pattern(s) for finding relevant resources inside `cwd`. If set, the default
 Type: `string`  
 Default: `json`
 
-Sets the UI5 version used for compatibility mode in the format `<major>.<minor>`, or keywords 'json' or 'edge'.
+Sets the UI5 version used for compatibility mode in the format `<major>.<minor>`, or keywords `json` or `edge`.
 
 NOTE: Unlike SAP's grunt-openui5 (https://github.com/SAP/grunt-openui5), the default behaviour is the legacy json mode, not the edge js mode.
 
@@ -114,7 +113,7 @@ Type: `boolean`
 Default value: `true`
 
 Optional parameter to set compression/minification of the files.
-- JavaScript is minified using [UglifyJS2](https://github.com/mishoo/UglifyJS2) and copyright comments are preserved (comments matching regular expression `/copyright|\(c\)|released under|license|\u00a9/i` )
+- JavaScript is minified using [terser](https://github.com/terser/terser) and copyright comments are preserved (comments matching regular expression `/copyright|\(c\)|released under|license|\u00a9/i` )
 - XML is minified using [pretty-data](https://github.com/vkiryukhin/pretty-data)
 - JSON is parsed for correctness and to remove extra whitespace
 

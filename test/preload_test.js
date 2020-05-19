@@ -56,6 +56,11 @@ const scenarios = [
     name: 'compat_1.40',
     compatVersion: '1.40',
     suffix: 'js' // override types.suffix
+  },
+  {
+    name: 'compat_1.71',
+    compatVersion: '1.71',
+    suffix: 'js' // override types.suffix
   }
 ]
 

@@ -1,6 +1,6 @@
 {
   "name": "openui5-preload",
-  "version": "2.3.2",
+  "version": "3.2.0",
   "description": "Creates OpenUI5 Preload files",
   "main": "index.js",
   "scripts": {

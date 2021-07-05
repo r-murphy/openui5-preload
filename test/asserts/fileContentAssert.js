@@ -16,11 +16,11 @@ const assert = require('assert')
 const fse = require('fs-extra')
 
 exports.equal = async(oOptions) => {
-  const sActualFileContent = await fse.readFileSync(oOptions.sActualFileSource, 'utf8')
+  const sActualFileContent = (await fse.readFile(oOptions.sActualFileSource, 'utf8'))
     .replace(/\r\n/gm, '\n') // replace \r\n with \n to be consistent everywhere
     .replace(/\\r\\n/gm, '\\n') // replace \\r\\n with \\n to be consistent everywhere
     .replace(/\n$/, '') // remove the last LF;
-  const sExpectedFileContent = await fse.readFileSync(oOptions.sExpectedFileSource, 'utf8')
+  const sExpectedFileContent = (await fse.readFile(oOptions.sExpectedFileSource, 'utf8'))
     .replace(/\r\n/gm, '\n') // replace \r\n with \n to be consistent everywhere
     .replace(/\\r\\n/gm, '\\n') // replace \\r\\n with \\n to be consistent everywhere
     .replace(/\n$/, '') // remove the last LF

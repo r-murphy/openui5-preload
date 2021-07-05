@@ -15,15 +15,15 @@
 const assert = require('assert')
 const fse = require('fs-extra')
 
-exports.equal = (oOptions) => {
-  const sActualFileContent = fse.readFileSync(oOptions.sActualFileSource, 'utf8')
+exports.equal = async(oOptions) => {
+  const sActualFileContent = await fse.readFileSync(oOptions.sActualFileSource, 'utf8')
     .replace(/\r\n/gm, '\n') // replace \r\n with \n to be consistent everywhere
     .replace(/\\r\\n/gm, '\\n') // replace \\r\\n with \\n to be consistent everywhere
     .replace(/\n$/, '') // remove the last LF;
-  const sExpectedFileContent = fse.readFileSync(oOptions.sExpectedFileSource, 'utf8')
+  const sExpectedFileContent = await fse.readFileSync(oOptions.sExpectedFileSource, 'utf8')
     .replace(/\r\n/gm, '\n') // replace \r\n with \n to be consistent everywhere
     .replace(/\\r\\n/gm, '\\n') // replace \\r\\n with \\n to be consistent everywhere
     .replace(/\n$/, '') // remove the last LF
-  // eslint-disable-next-line node/no-deprecated-api
-  assert.equal(sActualFileContent, sExpectedFileContent, oOptions.sMessage)
+
+  assert.strictEqual(sActualFileContent, sExpectedFileContent, oOptions.sMessage)
 }

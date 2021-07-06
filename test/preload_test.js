@@ -68,16 +68,16 @@ describe('openui5_preload', () => {
   for (const type of types) {
     describe(type.name, () => {
       for (const scenario of scenarios) {
-        it(scenario.name, () => {
-          runIt(type, scenario)
-          assertIt(type, scenario)
+        it(scenario.name, async() => {
+          await runIt(type, scenario)
+          await assertIt(type, scenario)
         })
       }
     })
   }
 })
 
-function runIt(type, scenario) {
+async function runIt(type, scenario) {
   const options = {
     dest: path.join(outputDir, `${type.name.toLowerCase()}_${scenario.name}`)
   }
@@ -98,12 +98,12 @@ function runIt(type, scenario) {
   if (scenario.compatVersion) {
     options.compatVersion = scenario.compatVersion
   }
-  preload(options)
+  await preload(options)
 }
 
-function assertIt(type, scenario) {
+async function assertIt(type, scenario) {
   const preloadPath = getPreloadFilePath(type, scenario)
-  fileContentAssert.equal({
+  await fileContentAssert.equal({
     sActualFileSource: path.join(outputDir, preloadPath),
     sExpectedFileSource: path.join('test/preload/expected', preloadPath),
     sMessage: 'preload should be correctly created.'
